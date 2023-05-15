@@ -1,0 +1,37 @@
+﻿@using ApartmentSaleProject.Models;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IQueryable<Block>
+@{
+    ViewData["Title"] = "Blocks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a class="btn btn-primary" href="/Apartment/AddBlock">Add Block</a>
+<h1>Blocks</h1>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            @foreach(var item in Model)
+            {
+             <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Status</td>
+                <td>
+                    <a class="btn btn-warning" href="/Apartment/EditBlock?id=@item.Id">Edit</a>
+                    <a class="btn btn-danger" href="/Apartment/DeactiveBlock?id=@item.Id">Deactive</a>
+                </td>
+            </tr>
+                
+            }
+        </tbody>
+    </table>
+</div>

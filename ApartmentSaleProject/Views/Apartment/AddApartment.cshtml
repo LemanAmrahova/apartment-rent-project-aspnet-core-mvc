@@ -1,0 +1,40 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model ApartmentSaleProject.Models.ViewModels.ApartmentViewModel
+@{
+    ViewData["Title"] = "AddApartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>AddApartment</h1>
+<div class="container mt-5">
+    <form asp-controller="Apartment" asp-action="AddApartment" method="post">
+        <div class="mb-3">
+            <label for="blockSelect" class="form-label">Block:</label>
+            <select class="form-select" id="blockSelect" asp-for="BId">
+                <option value="" selected disabled>Select Block</option>
+
+                @foreach (var items in Model.bList)
+                {
+                    <option value="@items.Id">@items.Name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="apartmentNumber" class="form-label">Apartment Number:</label>
+            <input type="number" class="form-control" id="apartmentNumber" asp-for="Number">
+        </div>
+        <div class="mb-3">
+            <label for="numberOfRooms" class="form-label">Number of Rooms:</label>
+            <input type="number" class="form-control" id="numberOfRooms" asp-for="NumOfRooms">
+        </div>
+        <div class="mb-3">
+            <label for="kv" class="form-label">KV:</label>
+            <input type="text" class="form-control" id="kv" asp-for="Kv">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price:</label>
+            <input type="text" class="form-control" id="price" asp-for="Price">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Apartment</button>
+    </form>
+</div>

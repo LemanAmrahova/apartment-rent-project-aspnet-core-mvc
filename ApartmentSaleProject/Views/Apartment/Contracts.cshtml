@@ -1,0 +1,51 @@
+﻿@using ApartmentSaleProject.Models.ViewModels
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IQueryable<ContractTableViewModel>
+@{
+    ViewData["Title"] = "Contracts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a type="submit" class="btn btn-primary" href="/Apartment/AddContract">Add Contract</a>
+<h1 class="mt-5">Contracts</h1>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Apartment №</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.ANumber</td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                    <td>@item.Price</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <a class="btn btn-warning" href="/Apartment/EditContract?id=@item.Id">Edit</a>
+                        <a class="btn btn-danger" href="/Apartment/DeactiveContract?id=@item.Id">Deactive</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

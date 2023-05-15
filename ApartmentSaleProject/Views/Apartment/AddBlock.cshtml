@@ -1,0 +1,17 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model ApartmentSaleProject.Models.Block
+@{
+    ViewData["Title"] = "AddBlock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Block</h1>
+<div class="container mt-5">
+    <form asp-controller="Apartment" asp-action="AddBlock" method="post">
+        <div class="mb-3">
+            <label for="blockName" class="form-label">Block Name:</label>
+            <input type="text" class="form-control" id="blockName" asp-for="Name">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Block</button>
+    </form>
+</div>

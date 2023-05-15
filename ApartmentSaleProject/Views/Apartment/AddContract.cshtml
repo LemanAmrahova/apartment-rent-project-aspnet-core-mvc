@@ -1,0 +1,39 @@
+﻿@model ApartmentSaleProject.Models.ViewModels.ContractViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "AddContract";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Contract</h1>
+<div class="container mt-5">
+    <form method="post" asp-controller="Apartment" asp-action="AddContract">
+        <div class="mb-3">
+            <label for="numberSelect" class="form-label">Apartment Number:</label>
+            <select class="form-select" id="numberSelect" asp-for="AId">
+                <option value="" selected disabled>Select Number</option>
+                @foreach (var items in Model.aList)
+                {
+                    <option value="@items.Id">@items.Number</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" asp-for="Name" >
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname</label>
+            <input type="text" class="form-control" id="surname" asp-for="Surname">
+        </div>
+        <div class="form-group">
+            <label for="start_date">Start Date</label>
+            <input type="date" class="form-control" id="start_date" asp-for="StartDate">
+        </div>
+        <div class="form-group">
+            <label for="end_date">End Date</label>
+            <input type="date" class="form-control" id="end_date" asp-for="EndDate">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
